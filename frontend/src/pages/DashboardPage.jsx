@@ -43,7 +43,7 @@ const SAMPLE_RISK = {
 const STEPS = [
   { label: 'Academic Engagement', icon: BookOpen },
   { label: 'Digital Learning', icon: Monitor },
-  { label: 'Behavioral Scores', icon: Brain },
+  { label: 'Study Habits', icon: Brain },
 ];
 
 // ── Helper: get slider color class based on field + value ─────────────────────
@@ -296,7 +296,7 @@ export default function DashboardPage() {
                   <ChevronLeft size={16} /> Back
                 </button>
                 <button className="btn btn-primary" onClick={() => setStep(2)}>
-                  Next: Behavioral Scores <ChevronRight size={16} />
+                  Next: Study Habits <ChevronRight size={16} />
                 </button>
               </div>
             </div>
@@ -311,23 +311,23 @@ export default function DashboardPage() {
                     <Brain size={18} style={{ color: '#8b5cf6' }} />
                   </div>
                   <div>
-                    <h3>Self-Regulation & Behavioral Quality</h3>
-                    <p>Rate your personal behavioral traits on a scale of 1–10</p>
+                    <h3>Your Study Habits & Choices</h3>
+                    <p>Select the option that best describes you (1–10)</p>
                   </div>
                 </div>
 
                 <div style={{ background: 'var(--info-light)', border: '1px solid var(--info-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', marginBottom: '1.25rem', display: 'flex', gap: '0.625rem', alignItems: 'flex-start', fontSize: '0.8rem', color: '#1e3a5f' }}>
                   <Info size={15} style={{ flexShrink: 0, marginTop: 1 }} />
-                  <span>For <strong>Procrastination</strong> and <strong>Stress</strong>, a higher score means a higher level — so lower is better for academic health.</span>
+                  <span>Note: For <strong>Putting Off Work</strong> and <strong>How Stressed You Feel</strong>, a lower score is better!</span>
                 </div>
 
                 <div className="input-grid">
-                  <SliderField id="class_participation_score" label="Class Participation" hint="1 = passive, 10 = highly engaged in class" min={1} max={10} unit="/10" value={form.class_participation_score} onChange={handleChange} />
-                  <SliderField id="search_skill_score" label="Information Search Skills" hint="Ability to find accurate academic sources" min={1} max={10} unit="/10" value={form.search_skill_score} onChange={handleChange} />
-                  <SliderField id="source_evaluation_score" label="Source Evaluation Rigor" hint="How critically you assess source reliability" min={1} max={10} unit="/10" value={form.source_evaluation_score} onChange={handleChange} />
-                  <SliderField id="time_management_score" label="Time Management Rating" hint="Ability to prioritize & keep to a schedule" min={1} max={10} unit="/10" value={form.time_management_score} onChange={handleChange} />
-                  <SliderField id="procrastination_score" label="Procrastination Tendency" hint="10 = severe procrastinator. Lower is better." min={1} max={10} unit="/10" value={form.procrastination_score} onChange={handleChange} />
-                  <SliderField id="stress_level" label="Perceived Stress Level" hint="How stressed you currently feel. Lower is better." min={1} max={10} unit="/10" value={form.stress_level} onChange={handleChange} />
+                  <SliderField id="class_participation_score" label="Taking Part in Class" hint="1 = I never join in, 10 = I always join in" min={1} max={10} unit="/10" value={form.class_participation_score} onChange={handleChange} />
+                  <SliderField id="search_skill_score" label="Finding Good Information" hint="1 = It is very hard for me, 10 = It is very easy for me" min={1} max={10} unit="/10" value={form.search_skill_score} onChange={handleChange} />
+                  <SliderField id="source_evaluation_score" label="Checking if Information is True" hint="1 = I never check, 10 = I always check carefully" min={1} max={10} unit="/10" value={form.source_evaluation_score} onChange={handleChange} />
+                  <SliderField id="time_management_score" label="Managing Your Time" hint="1 = I am not good at planning, 10 = I am very good at planning" min={1} max={10} unit="/10" value={form.time_management_score} onChange={handleChange} />
+                  <SliderField id="procrastination_score" label="Putting Off Work" hint="1 = I start right away, 10 = I always wait until the last minute" min={1} max={10} unit="/10" value={form.procrastination_score} onChange={handleChange} />
+                  <SliderField id="stress_level" label="How Stressed You Feel" hint="1 = I feel calm, 10 = I feel very worried" min={1} max={10} unit="/10" value={form.stress_level} onChange={handleChange} />
                 </div>
               </div>
 
@@ -379,9 +379,9 @@ export default function DashboardPage() {
             { label: 'LMS Time', val: `${form.lms_time_spent_hours_per_week} hrs/wk` },
             { label: 'Video Lectures', val: `${form.video_lectures_watched_per_week}/wk` },
             { label: 'Quiz Attempts', val: `${form.practice_quiz_attempts}/wk` },
-            { label: 'Participation', val: `${form.class_participation_score}/10` },
-            { label: 'Time Mgmt', val: `${form.time_management_score}/10` },
-            { label: 'Procrastination', val: `${form.procrastination_score}/10` },
+            { label: 'Taking Part', val: `${form.class_participation_score}/10` },
+            { label: 'Managing Time', val: `${form.time_management_score}/10` },
+            { label: 'Delaying Work', val: `${form.procrastination_score}/10` },
             { label: 'Stress', val: `${form.stress_level}/10` },
           ].map(({ label, val }, i) => (
             <div key={i} className="preview-metric">
