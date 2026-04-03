@@ -1,0 +1,35 @@
+{
+  "best_model": "LogisticRegression",
+  "outcome_models": {
+    "LogisticRegression": {
+      "accuracy": 0.6733333333333333,
+      "precision": 0.6720216371129821,
+      "recall": 0.6733333333333333,
+      "f1": 0.6726024190353693
+    },
+    "RandomForest": {
+      "accuracy": 0.56,
+      "precision": 0.5440463456597302,
+      "recall": 0.56,
+      "f1": 0.5488515370428854
+    },
+    "GradientBoosting": {
+      "accuracy": 0.545,
+      "precision": 0.5461778298829238,
+      "recall": 0.545,
+      "f1": 0.5445288231933778
+    }
+  },
+  "feature_importance": {},
+  "outcome_classes": [
+    "Average",
+    "Excellent",
+    "Good",
+    "Poor"
+  ],
+  "risk_classes": [
+    "High",
+    "Low",
+    "Medium"
+  ]
+}
