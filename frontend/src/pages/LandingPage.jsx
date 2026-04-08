@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {
   BrainCircuit, LineChart, ShieldCheck, Sparkles,
   ArrowRight, CheckCircle, BarChart2, Target, Users, Zap
 } from 'lucide-react';
+import { AuthContext } from '../App';
 
 const features = [
   {
@@ -67,6 +68,7 @@ const benefits = [
 ];
 
 export default function LandingPage() {
+  const { user } = useContext(AuthContext);
   return (
     <div className="animate-fade-in">
       {/* ── Hero ─────────────────────────────────────────────── */}
@@ -88,12 +90,20 @@ export default function LandingPage() {
         </p>
 
         <div className="hero-cta-group">
-          <Link to="/register" className="btn btn-primary btn-lg">
-            Start Your Free Assessment <ArrowRight size={18} />
-          </Link>
-          <Link to="/login" className="btn btn-secondary btn-lg">
-            Sign In to Dashboard
-          </Link>
+          {user ? (
+            <Link to="/dashboard" className="btn btn-primary btn-lg">
+              Go to Dashboard <ArrowRight size={18} />
+            </Link>
+          ) : (
+            <>
+              <Link to="/register" className="btn btn-primary btn-lg">
+                Start Your Free Assessment <ArrowRight size={18} />
+              </Link>
+              <Link to="/login" className="btn btn-secondary btn-lg">
+                Sign In to Dashboard
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Stats Band */}
