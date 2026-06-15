@@ -22,3 +22,14 @@ services:
         value: 5000
       - key: PYTHON_VERSION
         value: 3.11.9
+
+  - type: web
+    name: edupredict-frontend
+    env: static
+    plan: free
+    rootDir: frontend
+    buildCommand: "npm install && npm run build"
+    publishPath: "dist"
+    envVars:
+      - key: VITE_API_URL
+        value: ${edupredict-backend}

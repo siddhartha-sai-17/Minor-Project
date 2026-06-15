@@ -17,6 +17,7 @@ We have pre-configured a Render Blueprint (`render.yaml`) to set up a Python web
 6. Click **Apply** to automatically spin up:
    - A free **PostgreSQL Database** (`edupredict-db`).
    - A free **Python Web Service** (`edupredict-backend`) that compiles, trains the ML model, and exposes the Flask REST API.
+   - A free **Static Site** (`edupredict-frontend`) that builds and hosts your React user interface.
 
 ---
 
