@@ -12,11 +12,12 @@ class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY", "slbaps-secret-key-2024-change-in-production")
     JWT_EXPIRY_HOURS = int(os.environ.get("JWT_EXPIRY_HOURS", 24))
 
-    # SQLite database stored in backend/data/
-    SQLALCHEMY_DATABASE_URI = os.environ.get(
-        "DATABASE_URL",
-        f"sqlite:///{os.path.join(DATA_DIR, 'slbaps.db')}"
-    )
+    # SQLite database stored in backend/data/ or PostgreSQL from Render
+    _database_url = os.environ.get("DATABASE_URL")
+    if _database_url and _database_url.startswith("postgres://"):
+        _database_url = _database_url.replace("postgres://", "postgresql://", 1)
+
+    SQLALCHEMY_DATABASE_URI = _database_url or f"sqlite:///{os.path.join(DATA_DIR, 'slbaps.db')}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Paths for ML artefacts

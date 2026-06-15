@@ -1,0 +1,24 @@
+databases:
+  - name: edupredict-db
+    databaseName: edupredict_db
+    user: edupredict_user
+    plan: free
+
+services:
+  - type: web
+    name: edupredict-backend
+    env: python
+    plan: free
+    buildCommand: "pip install -r backend/requirements.txt -r backend/requirements-prod.txt && python backend/services/train_model.py"
+    startCommand: "gunicorn --bind 0.0.0.0:$PORT \"backend.app:create_app()\""
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: edupredict-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PORT
+        value: 5000
+      - key: PYTHON_VERSION
+        value: 3.13.3
