@@ -35,4 +35,4 @@ services:
         destination: /index.html
     envVars:
       - key: VITE_API_URL
-        value: ${edupredict-backend}
+        value: https://edupredict-backend-w57t.onrender.com
